@@ -1,5 +1,9 @@
 # CS-640-Project-1
 Assignment 1: Sockets, Mininet, & Performance
+Mininet info: 
+  Hostname: mininet-16
+  Username: mininet
+  Password: admEmb38
 CS640 Spring 2016
 Due: Tuesday, February 09 at 11pm
 
