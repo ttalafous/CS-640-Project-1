@@ -50,6 +50,7 @@ class Iperfer{
          	int ready = serv.getInputStream().available();
          	byte[] bytes = new byte[ready];
          	serv.getInputStream().read(bytes);
+	    }
 	}
     }
 }
