@@ -46,8 +46,10 @@ class Iperfer{
 	    }catch (IOException e){
                 System.err.println("Caught IOException: " + e.getMessage());
             }
-	    while(stdin.read() != -1){
-		
+	    while (serv.getInputStream().available() > 0) {
+         	int ready = serv.getInputStream().available();
+         	byte[] bytes = new byte[ready];
+         	serv.getInputStream().read(bytes);
 	}
     }
 }
