@@ -46,12 +46,16 @@ class Iperfer{
 	    }catch (IOException e){
                 System.err.println("Caught IOException: " + e.getMessage());
             }
+            long startTime = System.nanoTime();
 	    while (serv.getInputStream().available() > 0) {
          	int ready = serv.getInputStream().available();
          	byte[] bytes = new byte[1000];
          	serv.getInputStream().read(bytes);
          	counter++;
 	    }
+	    long elapsed = System.nanoTime() - startTime;
+	    double rate = counter/elapsed;
+	    System.out.println("recieved=" + counter +" KB rate =" + rate/1000 + " Mbps");
 	}
     }
 }
