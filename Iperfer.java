@@ -48,9 +48,9 @@ class Iperfer{
             }
 	    while (serv.getInputStream().available() > 0) {
          	int ready = serv.getInputStream().available();
-         	byte[] bytes = new byte[ready];
+         	byte[] bytes = new byte[1000];
          	serv.getInputStream().read(bytes);
-	    }
+         	counter++;
 	}
     }
 }
