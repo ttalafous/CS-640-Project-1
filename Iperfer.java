@@ -83,8 +83,9 @@ class Iperfer{
 	    }
 	    int stdin = 0;
 	    Socket server = null;
+	    ServerSocket serv = null;
 	    try{
-		ServerSocket serv = new ServerSocket(port);
+		serv = new ServerSocket(port);
 		server = serv.accept();
 	    }catch (IOException e){
 		System.err.println("Caught IOException: " + e.getMessage());
@@ -100,11 +101,12 @@ class Iperfer{
 		    System.err.println("Caught IOException: " + e.getMessage());
 		}
 	    }
+	    server.close();
+	    serv.close();
 	    counter ++;
 	    counter = counter/1000;
 	    double  elapsed = System.nanoTime() - startTime;
 	    elapsed = elapsed * (.00000001);
-	    //System.out.println(elapsed);
 	    double rate = counter/elapsed;
 	    System.out.println("recieved=" + counter +" KB rate =" + rate/1000 + " Mbps");
 	}
