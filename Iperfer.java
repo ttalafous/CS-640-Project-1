@@ -20,6 +20,7 @@ class Iperfer{
 		    port = Integer.parseInt(args[i]);
 		}catch (NumberFormatException e){
 		    System.err.println("Error: port must be integer");
+		    System.exit(0);
 		}
 	    }
 	    if(args[i].equals("-t") && i < (args.length -1)){
@@ -28,20 +29,27 @@ class Iperfer{
 		    time = Integer.parseInt(args[i]);
 		}catch (NumberFormatException e){
 		    System.err.println("Error: time must be integer");
+		    System.exit(0);
 		}
 	    }
 	    if(args[i].equals("-s")) sflag = true;
 	    i++;
 	}  
-	if(port <= 1024 || port >= 65535)
+	if(port <= 1024 || port >= 65535){
 	    System.err.println("Error: port number must be in the range 1024 to 65535");
-       
+	    System.exit(0);
+	}
 	if(cflag){
 	    //arg checking
-	    if(args.length != 7)
+	    if(args.length != 7){
 		System.err.println("Error: missing or additional arguments");
-	    if(time <= 0) System.err.println("Error: time must be a positve integer");
-	    //converting time in seconds to nanoseconds
+		System.exit(0);
+	    }
+	    if(time <= 0){
+		System.err.println("Error: time must be a positve integer");
+		System.exit(0);
+	    }
+		//converting time in seconds to nanoseconds
 	    double nanTime = time * 100000000;
 	    //create new socket object for the client
 	    Socket clien = null;
@@ -69,8 +77,10 @@ class Iperfer{
 	    System.out.println("sent=" + counter +" KB rate =" + rate/1000 + " Mbps");
 	}
 	if(sflag){
-	    if(args.length != 3)
+	    if(args.length != 3){
 		System.err.println("Error: missing or additional arguments");
+		System.exit(0);
+	    }
 	    int stdin = 0;
 	    Socket server = null;
 	    try{
@@ -94,6 +104,7 @@ class Iperfer{
 	    counter = counter/1000;
 	    double  elapsed = System.nanoTime() - startTime;
 	    elapsed = elapsed * (.00000001);
+	    //System.out.println(elapsed);
 	    double rate = counter/elapsed;
 	    System.out.println("recieved=" + counter +" KB rate =" + rate/1000 + " Mbps");
 	}
