@@ -69,6 +69,8 @@ class Iperfer{
 	    System.out.println("sent=" + counter +" KB rate =" + rate/1000 + " Mbps");
 	}
 	if(sflag){
+	    if(args.length != 3)
+		System.err.println("Error: missing or additional arguments");
 	    int stdin = 0;
 	    Socket server = null;
 	    try{
