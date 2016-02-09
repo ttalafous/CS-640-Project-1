@@ -57,7 +57,8 @@ class Iperfer{
 		clien = new Socket(hostName, port);
 		out = clien.getOutputStream();
 	    }catch (IOException e){
-		System.err.println("Caught IOException: " + e.getMessage());
+		System.err.println("Invalid hostname or ip address");
+		System.exit(0);
 	    }
 	    long startTime = System.nanoTime();
 	    //while still time remaining send 1000 byte array and increment
@@ -66,7 +67,8 @@ class Iperfer{
 		try{
 		    out.write(b);
 		}catch (IOException e){
-		    System.err.println("Caught IOException: " + e.getMessage());
+		    System.err.println("Write failed");
+		    System.exit(0);
 		}
 		counter++;
 	    }
@@ -88,7 +90,8 @@ class Iperfer{
 		serv = new ServerSocket(port);
 		server = serv.accept();
 	    }catch (IOException e){
-		System.err.println("Caught IOException: " + e.getMessage());
+		System.err.println("Server socket error");
+		System.exit(0);
 	    }
 	    
 	    long startTime = System.nanoTime();
@@ -98,7 +101,8 @@ class Iperfer{
 		    stdin = server.getInputStream().read(bytes);
 		    counter = counter +  stdin;
 		}catch (IOException e){
-		    System.err.println("Caught IOException: " + e.getMessage());
+		    System.err.println("Read failed");
+		    System.exit(0);
 		}
 	    }
 	    server.close();
