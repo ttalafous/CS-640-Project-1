@@ -35,7 +35,7 @@ class Iperfer{
 	    if(args[i].equals("-s")) sflag = true;
 	    i++;
 	}  
-	if(port <= 1024 || port >= 65535){
+	if(port < 1024 || port > 65535){
 	    System.err.println("Error: port number must be in the range 1024 to 65535");
 	    System.exit(0);
 	}
@@ -108,7 +108,7 @@ class Iperfer{
 	    double  elapsed = System.nanoTime() - startTime;
 	    elapsed = elapsed * (.00000001);
 	    double rate = counter/elapsed;
-	    System.out.println("recieved=" + counter +" KB rate =" + rate/1000 + " Mbps");
+	    System.out.println("received=" + counter +" KB rate =" + rate/1000 + " Mbps");
 	}
     }
 }
