@@ -105,11 +105,11 @@ class Iperfer{
 		    System.exit(0);
 		}
 	    }
+	    double  elapsed = System.nanoTime() - startTime;
 	    server.close();
 	    serv.close();
 	    counter ++;
 	    counter = counter/1000;
-	    double  elapsed = System.nanoTime() - startTime;
 	    elapsed = elapsed * (.00000001);
 	    double rate = counter/elapsed;
 	    System.out.println("received=" + counter +" KB rate =" + rate/1000 + " Mbps");
