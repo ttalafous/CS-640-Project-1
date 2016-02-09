@@ -50,7 +50,7 @@ class Iperfer{
 		System.exit(0);
 	    }
 		//converting time in seconds to nanoseconds
-	    double nanTime = time * 100000000;
+	    double nanTime = time * 1000000000;
 	    //create new socket object for the client
 	    Socket clien = null;
 	    try{
@@ -110,7 +110,7 @@ class Iperfer{
 	    serv.close();
 	    counter ++;
 	    counter = counter/1000;
-	    elapsed = elapsed * (.00000001);
+	    elapsed = elapsed * (.000000001);
 	    double rate = counter/elapsed;
 	    System.out.println("received=" + counter +" KB rate =" + rate/1000 + " Mbps");
 	}
